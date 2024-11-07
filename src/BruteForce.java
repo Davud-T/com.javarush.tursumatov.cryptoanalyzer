@@ -20,7 +20,7 @@ public class BruteForce {
                     }
                 }
             }
-            System.out.println("Файлы с результатами взлома сохранены в директорию: " + directoryPath);
+            System.out.println("Файлы с результатами сохранены в директорию: " + directoryPath);
         }
         catch (IOException e){
             System.out.println("Ошибка при чтении файла: " + filePath);

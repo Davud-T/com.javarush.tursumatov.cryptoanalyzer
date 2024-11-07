@@ -12,8 +12,8 @@ public class App {
         while (true){
             System.out.println("ШИФР ЦЕЗАРЯ \uD83D\uDD12\uD83D\uDD11\uD83C\uDFDB\uFE0F\nВыберите операцию: \uD83D\uDE0A");
             System.out.println("1. Шифрование \uD83D\uDD12");
-            System.out.println("2. Дешифрование \uD83D\uDD13");
-            System.out.println("3. Взлом методом Brute Force \uD83D\uDD11");
+            System.out.println("2. Расшифровка текста с помощью ключа \uD83D\uDD13");
+            System.out.println("3. Расшифровка текста с помощью brute force \uD83D\uDD11");
             System.out.println("0. Выход \uD83D\uDEAA");
             String choice = console.nextLine();
 
