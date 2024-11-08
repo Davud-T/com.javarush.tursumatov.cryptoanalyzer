@@ -21,10 +21,10 @@ public class App {
 
             switch (choice) {
                 case "1":
-                    String filePathToEncrypt = checkFile(validate, console, "Введите путь к файлу для шифрования: \uD83D\uDCC4");
+                    String filePathToEncrypt = getValidFilePath(validate, console, "Введите путь к файлу для шифрования: \uD83D\uDCC4");
                     System.out.println("Введите ключ (целое число): \uD83D\uDD11");
                     int key = validate.keyInt(console);
-                    String directoryPathEncrypt = checkDirectory(validate, console, "Введите путь к директории для сохранения зашифрованного файла: \uD83D\uDCC1");
+                    String directoryPathEncrypt = getValidDirectoryPath(validate, console, "Введите путь к директории для сохранения зашифрованного файла: \uD83D\uDCC1");
                     String inputFileNameEncrypt = new File(filePathToEncrypt).getName();
                     String outputFileNameEncrypt = inputFileNameEncrypt.substring(0, inputFileNameEncrypt.lastIndexOf('.')) + "_encrypted.txt";
                     String outputFilePathEncrypt = Paths.get(directoryPathEncrypt, outputFileNameEncrypt).toAbsolutePath().toString();
@@ -33,10 +33,10 @@ public class App {
                     break;
 
                 case "2":
-                    String filePathToDecrypt = checkFile(validate, console, "Введите путь к файлу для дешифрования: \uD83D\uDCC4");
+                    String filePathToDecrypt = getValidFilePath(validate, console, "Введите путь к файлу для дешифрования: \uD83D\uDCC4");
                     System.out.println("Введите ключ (целое число): \uD83D\uDD11");
                     key = validate.keyInt(console);
-                    String directoryPathDecrypt = checkDirectory(validate, console, "Введите путь к директории для сохранения дешифрованного файла: \uD83D\uDCC1");
+                    String directoryPathDecrypt = getValidDirectoryPath(validate, console, "Введите путь к директории для сохранения дешифрованного файла: \uD83D\uDCC1");
                     String inputFileNameDecrypt = new File(filePathToDecrypt).getName();
                     String outputFileNameDecrypt = inputFileNameDecrypt.substring(0, inputFileNameDecrypt.lastIndexOf('.')) + "_decrypted.txt";
                     String outputFilePathDecrypt = Paths.get(directoryPathDecrypt, outputFileNameDecrypt).toAbsolutePath().toString();
@@ -45,14 +45,14 @@ public class App {
                     break;
 
                 case "3":
-                    String filePathToBruteForce = checkFile(validate, console, "Введите путь к файлу для взлома: \uD83D\uDCC4");
-                    String directoryPath = checkDirectory(validate, console, "Введите путь к директории для сохранения файлов с перебором ключей: \uD83D\uDCC1");
+                    String filePathToBruteForce = getValidFilePath(validate, console, "Введите путь к файлу для взлома: \uD83D\uDCC4");
+                    String directoryPath = getValidDirectoryPath(validate, console, "Введите путь к директории для сохранения файлов с перебором ключей: \uD83D\uDCC1");
                     bruteForce.bruteForceFile(filePathToBruteForce, directoryPath);
                     break;
 
                 case "4":
-                    String filePathToAnalyze = checkFile(validate, console, "Введите путь к файлу для статистического анализа: 📄");
-                    String directoryPathAnalyze = checkDirectory(validate, console, "Введите путь к директории для сохранения результата: 📁");
+                    String filePathToAnalyze = getValidFilePath(validate, console, "Введите путь к файлу для статистического анализа: 📄");
+                    String directoryPathAnalyze = getValidDirectoryPath(validate, console, "Введите путь к директории для сохранения результата: 📁");
                     String inputFileNameAnalyze = new File(filePathToAnalyze).getName();
                     String outputFileNameAnalyze = inputFileNameAnalyze.substring(0, inputFileNameAnalyze.lastIndexOf('.')) + "_analyzed.txt";
                     String outputFilePathAnalyze = Paths.get(directoryPathAnalyze, outputFileNameAnalyze).toAbsolutePath().toString();
@@ -70,7 +70,7 @@ public class App {
         }
     }
 
-    private static String checkFile(Validate validate, Scanner scanner, String message) {
+    private static String getValidFilePath(Validate validate, Scanner scanner, String message) {
         String filePath;
         while (true) {
             System.out.println(message);
@@ -84,7 +84,7 @@ public class App {
         return filePath;
     }
 
-    private static String checkDirectory(Validate validate, Scanner scanner, String message) {
+    private static String getValidDirectoryPath(Validate validate, Scanner scanner, String message) {
         String directoryPath;
         while (true) {
             System.out.println(message);
