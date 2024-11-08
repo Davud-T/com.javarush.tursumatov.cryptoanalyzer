@@ -7,7 +7,7 @@ public class StatAnalyze {
     private final Encryptor encryptor = new Encryptor();
 
     public void analyzeFile(String filePath, String outputFilePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(Paths.get(filePath).toAbsolutePath().toString()))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             HashMap<Character, Integer> frequencyMap = new HashMap<>();
             int character;
             while ((character = reader.read()) != -1) {
@@ -28,8 +28,8 @@ public class StatAnalyze {
             int mostFrequentCharIndex = encryptor.getIndexInAlphabet(mostFrequentChar);
             int key = (mostFrequentCharIndex - assumedSpaceIndex + encryptor.ALPHABET.length) % encryptor.ALPHABET.length;
 
-            try (BufferedReader readerToDecrypt = new BufferedReader(new FileReader(Paths.get(filePath).toAbsolutePath().toString()));
-                 BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(outputFilePath).toAbsolutePath().toString()))) {
+            try (BufferedReader readerToDecrypt = new BufferedReader(new FileReader(filePath));
+                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
                 while ((character = readerToDecrypt.read()) != -1) {
                     char decryptedChar = encryptor.shiftChar((char) character, -key);
                     writer.write(decryptedChar);
