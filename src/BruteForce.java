@@ -7,7 +7,7 @@ public class BruteForce {
     public void bruteForceFile(String filePath, String directoryPath) {
         try {
             for (int key = 0; key < encryptor.ALPHABET.length; key++) {
-                try (BufferedReader reader = new BufferedReader(new FileReader(Paths.get(filePath).toString()))) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                     String inputFileName = new File(filePath).getName();
                     String outputFileName = inputFileName.substring(0, inputFileName.lastIndexOf(".")) + "_key_" + key + ".txt";
                     File outputFile = new File(Paths.get(directoryPath, outputFileName).toAbsolutePath().toString());
