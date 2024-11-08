@@ -15,8 +15,8 @@ public class Validate {
     }
 
     public void processFile(String inputFilePath, String outputFilePath, int key, Encryptor encryptor, boolean encrypt) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(Paths.get(inputFilePath).toAbsolutePath().toString()));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(Paths.get(outputFilePath).toAbsolutePath().toString()))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFilePath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
             int character;
 
             while ((character = reader.read()) != -1) {
